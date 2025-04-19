@@ -48,6 +48,7 @@ func (c ConfigFileResource) Schema(_ context.Context, _ resource.SchemaRequest, 
 			"commit": schema.BoolAttribute{
 				Optional: true,
 				Default:  booldefault.StaticBool(true),
+				Computed: true,
 			},
 		},
 	}
