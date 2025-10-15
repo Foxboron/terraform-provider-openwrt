@@ -26,30 +26,38 @@ terraform {
 }
 ```
 
-### Development
+## Documentation
+
+Full documentation can be found in the [`docs`](docs) directory.
+
+## Development
+
+#### Prerequisites
+
+- [Golang](https://golang.org/doc/install)
+- [An OpenWRT Router](https://openwrt.org)
+- [Make](https://www.gnu.org/software/make/)
+- [Golangci-lint](https://golangci-lint.run/)
+- [GoReleaser](https://goreleaser.com/)
 
 #### Setup
 
-1. Follow these [instructions](https://golang.org/doc/install) to setup a Golang development environment.
-2. Checkout the repository `git clone ...`
-3. Compile from sources to a development binary:
+1. Checkout the repository `git clone ...`
+2. Compile from sources to a development binary:
 
 ```shell
 cd terraform-provider-openwrt
-go build -v
+make build
 ```
 
-4. Configure Terraform (`~/.terraformrc`) to use the development binary provider:
+3. Configure Terraform (`~/.terraformrc`) to use the development binary provider:
 
 ```shell
 $ cat ~/.terraformrc
 provider_installation {
   dev_overrides {
-    "foxboron/openwrt" = "/home/<REPLACE_ME>/git/terraform-provider-openwrt"
+    "foxboron/openwrt" = "/<PATH_WHERE_YOU_EXECUTED_GIT_CLONE>/terraform-provider-openwrt"
   }
+  direct {}
 }
 ```
-
-## Documentation
-
-Full documentation can be found in the [`docs`](docs) directory.
