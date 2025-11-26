@@ -26,19 +26,20 @@ install:
 	go mod download
 
 generate:
-	go generate -v ./...; cd tools; go generate -v ./...
+	go generate -v ./...
 
-build: generate
+tf-generate: generate
+	cd tools; go generate -v ./...
+
+build: tf-generate
 	go build -v
 
 test:
 	go test -tags=test -race -parallel=10 -timeout 120s -cover -coverprofile=_out/.coverage -v $(PACKAGES);
 	go tool cover -html=_out/.coverage -o=./_out/coverage.html
 
-snapshot:
+snapshot: tf-generate
 	goreleaser build --clean --snapshot
 
 release:
-	export GITHUB_TOKEN=$(shell gh config get oauth_token -h github.com) && \
-	export GPG_FINGERPRINT="9C02FF419FECBE16" && \
 	goreleaser release --clean
