@@ -1,11 +1,11 @@
 terraform-provider-openwrt
 ==========================
 
-openwrt provider for Terraform.
+Openwrt Provider for Terraform (or OpenTofu).
 
 ## Prerequisites
 
-- [Terraform](http://terraform.io)
+- [Terraform](https://terraform.io) or [OpenTofu](https://opentofu.org/)
 - [An OpenWRT Router](https://openwrt.org)
 - `luasocket` `luci-mod-rpc` `luci-lib-ipkg` and `luci-compat` packages installed in the openwrt router
 
